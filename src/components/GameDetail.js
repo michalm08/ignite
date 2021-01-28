@@ -10,6 +10,32 @@ import { useHistory } from 'react-router-dom';
 
 import { smallImage } from '../util';
 
+//IMAGES
+import playstation from '../img/playstation.svg';
+import steam from '../img/steam.svg';
+import xbox from '../img/xbox.svg';
+import nintendo from '../img/nintendo.svg';
+import apple from '../img/apple.svg';
+import gamepad from '../img/gamepad.svg';
+
+//GET PLATFORM IMAGES
+const getPlatform = (platform) => {
+  switch (platform) {
+    case 'PlayStation 4':
+      return playstation;
+    case 'Xbox One':
+      return xbox;
+    case 'PC':
+      return steam;
+    case 'Nintendo Switch':
+      return nintendo;
+    case 'iOS':
+      return apple;
+    default:
+      return gamepad;
+  }
+};
+
 const GameDetail = ({ pathId }) => {
   const history = useHistory();
   //Exit Detail
@@ -33,19 +59,22 @@ const GameDetail = ({ pathId }) => {
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
-
               <Info>
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.platforms.map((data) => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      key={data.platform.id}
+                      alt={data.platform.name}
+                      src={getPlatform(data.platform.name)}
+                    ></img>
                   ))}
                 </Platforms>
               </Info>
             </Stats>
             <Media>
               <motion.img
-              layoutId={`image ${pathId}`}
+                layoutId={`image ${pathId}`}
                 src={smallImage(game.background_image, 1280)}
                 alt={game.background_image}
               />
@@ -96,7 +125,7 @@ const Detail = styled(motion.div)`
   left: 10%;
   color: black;
   z-index: 10;
-  
+
   img {
     width: 100%;
   }
