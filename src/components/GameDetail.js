@@ -145,9 +145,18 @@ const Detail = styled(motion.div)`
   left: 10%;
   color: black;
   z-index: 10;
-
+  @media (max-width: 1050px) {
+    width: 90%;
+    left: 5%;
+  }
   img {
     width: 100%;
+  }
+  @media (max-width: 526px) {
+    padding: 2rem;
+    p {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -160,6 +169,22 @@ const Stats = styled(motion.div)`
     height: 2rem;
     display: inline;
   }
+  @media (max-width: 526px) {
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    .raitng {
+      img {
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+    }
+
+    h3 {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const Info = styled(motion.div)`
@@ -171,6 +196,16 @@ const Platforms = styled(motion.div)`
   justify-content: space-between;
   img {
     margin-left: 3rem;
+  }
+  @media (max-width: 815px) {
+    display: grid;
+    grid-template-columns: 5ch auto;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    img {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 `;
 

@@ -60,6 +60,23 @@ const StyledNav = styled(motion.nav)`
     background: #ff7676;
     color: white;
   }
+
+  @media (max-width: 768px) {
+    input {
+      width: 60%;
+    }
+    button {
+      margin-top: 1rem;
+    }
+  }
+  @media (max-width: 520px) {
+    input {
+      width: 100%;
+    }
+    button {
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    }
+  }
 `;
 const Logo = styled(motion.nav)`
   display: flex;

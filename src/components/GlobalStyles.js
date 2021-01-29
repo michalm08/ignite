@@ -52,6 +52,7 @@ input{
     font-family: 'Montserrat', sans-serif;
 }
 
+
 `;
 
 export default GlobalStyles;
