@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import logo from '../img/logo.svg';
+import { fadeIn } from '../animations';
 
 //Redux & Routes
 import { fetchSearch } from '../actions/gamesAction';
@@ -21,19 +22,20 @@ const Nav = () => {
     dispatch(fetchSearch(textInput));
     setTextInput('');
   };
-  const clearSearched = ()=>{
-    dispatch({type: "CLEAR_SEARCHED"})
-  }
+  const clearSearched = () => {
+    dispatch({ type: 'CLEAR_SEARCHED' });
+  };
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial='hidden' animate='show'>
       <Logo onClick={clearSearched}>
         <img src={logo} alt='logo' />
         <h1>Ignite</h1>
       </Logo>
       <form className='search'>
         <input value={textInput} onChange={inputHandler} type='text' />
-        <button onClick={submitSearch} type='submit'>Search</button>
-       
+        <button onClick={submitSearch} type='submit'>
+          Search
+        </button>
       </form>
     </StyledNav>
   );
