@@ -16,7 +16,6 @@ const Home = () => {
   //get the current location
   const location = useLocation();
   const pathId = location.pathname.split('/')[2];
-  console.log(pathId);
 
   //FETCH GAMES
   const dispatch = useDispatch();
@@ -24,11 +23,31 @@ const Home = () => {
     dispatch(loadGames());
   }, [dispatch]);
   //Get that data back
-  const { newGames, popular, upcoming } = useSelector((state) => state.games);
+  const { newGames, popular, upcoming, searched } = useSelector(
+    (state) => state.games
+  );
   return (
     <GameList>
-      <AnimateSharedLayout type="crossfade">
-        <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
+      <AnimateSharedLayout type='crossfade'>
+        <AnimatePresence>
+          {pathId && <GameDetail pathId={pathId} />}
+        </AnimatePresence>
+        {searched.length ? (
+          <div className='searched'>
+            <h2>Searched games:</h2>
+            <Games>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  image={game.background_image}
+                  key={game.id}
+                />
+              ))}
+            </Games>
+          </div>
+        ):''}
         <h2>Upcoming games:</h2>
         <Games>
           {upcoming.map((game) => (

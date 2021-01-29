@@ -26,7 +26,8 @@ const Game = ({ name, released, id, image }) => {
         <p>{released}</p>
         <motion.img
           layoutId={`image ${stringPathId}`}
-          src={smallImage(image, 640)}
+          src={smallImage(image, 600)}
+          
           alt={name}
         />
       </Link>

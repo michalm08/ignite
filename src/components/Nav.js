@@ -13,7 +13,6 @@ const Nav = () => {
 
   const [textInput, setTextInput] = useState('');
   const inputHandler = (e) => {
-    
     setTextInput(e.target.value);
   };
 
@@ -22,15 +21,19 @@ const Nav = () => {
     dispatch(fetchSearch(textInput));
     setTextInput('');
   };
+  const clearSearched = ()=>{
+    dispatch({type: "CLEAR_SEARCHED"})
+  }
   return (
     <StyledNav>
-      <Logo>
+      <Logo onClick={clearSearched}>
         <img src={logo} alt='logo' />
         <h1>Ignite</h1>
       </Logo>
       <form className='search'>
         <input value={textInput} onChange={inputHandler} type='text' />
         <button onClick={submitSearch} type='submit'>Search</button>
+       
       </form>
     </StyledNav>
   );
